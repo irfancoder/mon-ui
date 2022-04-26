@@ -1,0 +1,49 @@
+h1 {
+    @apply font-bold text-7xl tracking-tight text-gray-900 dark:text-gray-50;
+}
+
+h2 {
+    @apply font-semibold text-5xl tracking-tight text-gray-900 dark:text-gray-50;
+}
+
+h3 {
+    @apply font-semibold text-3xl tracking-normal text-gray-800 dark:text-gray-50;
+}
+
+h4 {
+    @apply font-normal text-xl tracking-normal text-gray-800 dark:text-gray-50;
+}
+
+h5 {
+    @apply font-normal text-xl tracking-normal text-gray-500 dark:text-gray-50;
+}
+
+h6 {
+    @apply text-base uppercase tracking-wider font-semibold max-w-prose text-gray-500 dark:text-gray-50;
+}
+
+p {
+    @apply font-normal text-lg text-black dark:text-gray-100;
+}
+
+span {
+    @apply font-normal text-base text-gray-800 dark:text-gray-100;
+}
+
+label {
+    @apply font-medium text-lg text-gray-500 dark:text-gray-100;
+}
+
+small {
+    @apply text-sm font-normal text-gray-800 dark:text-gray-50;
+}
+
+b,
+strong {
+    @apply font-semibold text-gray-800 dark:text-gray-50;
+}
+
+a,
+.at {
+    @apply text-base font-medium text-primary-700;
+}

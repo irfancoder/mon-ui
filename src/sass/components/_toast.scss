@@ -1,0 +1,34 @@
+.toast {
+    @apply w-full px-4 py-2 text-sm rounded-md shadow-lg;
+
+    &-wrapper {
+        @apply fixed flex flex-col-reverse top-10 right-10 w-full max-w-xs gap-4;
+    }
+
+    &-info {
+        @apply bg-primary-100 ring-1 ring-primary-500;
+    }
+    &-success {
+        @apply bg-green-100 ring-1 ring-green-500;
+    }
+    &-error {
+        @apply bg-red-100 ring-1 ring-red-500;
+    }
+    &-warning {
+        @apply bg-yellow-100 ring-1 ring-yellow-500;
+    }
+    &-default {
+        @apply bg-slate-100 ring-1 ring-slate-500;
+    }
+
+    /* Transitions */
+    &-enter-active,
+    &-leave-active {
+        @apply transition-all ease-in duration-100;
+    }
+
+    &-enter-from,
+    &-leave-to {
+        @apply transform opacity-0 scale-95;
+    }
+}

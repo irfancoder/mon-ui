@@ -1,0 +1,10 @@
+.tab {
+    @apply flex w-full justify-evenly list-none border-b;
+    > li {
+        @apply list-none;
+    }
+
+    &-active {
+        @apply text-blue-500 border-blue-600 border-b pb-4;
+    }
+}

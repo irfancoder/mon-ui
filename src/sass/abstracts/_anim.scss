@@ -1,0 +1,5 @@
+.anim {
+    &-default {
+        @apply transition-all ease-linear duration-75;
+    }
+}

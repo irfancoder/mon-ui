@@ -1,0 +1,6 @@
+.step {
+    @apply flex w-full justify-evenly list-none;
+    > li {
+        @apply list-none;
+    }
+}

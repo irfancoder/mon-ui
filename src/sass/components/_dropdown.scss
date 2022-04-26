@@ -1,0 +1,49 @@
+.dropdown {
+    @apply relative inline-block;
+
+    &-content {
+        @apply p-2 rounded-md shadow-md overflow-hidden border z-10 bg-white min-w-48;
+    }
+
+    &-anchor {
+        &-left {
+            @apply absolute left-0;
+        }
+
+        &-right {
+            @apply absolute right-0;
+        }
+    }
+
+    &-menu {
+        > li + li {
+            @apply pt-2;
+        }
+
+        .btn {
+            @apply w-full text-left;
+        }
+    }
+}
+
+/* DIRECTION */
+.drop {
+    &-up {
+        @apply bottom-full mb-1;
+    }
+
+    &-down {
+        @apply top-full mt-1;
+    }
+}
+
+/* TRANSITIONS */
+.dropdown-enter-active,
+.dropdown-leave-active {
+    @apply transition-all ease-in duration-100;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+    @apply transform opacity-0 scale-95;
+}
