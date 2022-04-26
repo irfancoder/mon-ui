@@ -44,7 +44,7 @@
                 autocomplete="on"
             />
             <label v-if="type === 'password'" @click="toggleVisibility" class="form-showpassword anim-default">{{ showPassword ? 'Hide' : 'Show' }}</label>
-            <span v-if="maxChar" class="absolute anim-default right-0 bottom-0 p-4">{{ maxChar - charLength }}</span>
+            <span v-if="maxChar" class="absolute anim-default right-0 bottom-0 px-4 pb-2">{{ maxChar - charLength }}</span>
         </div>
 
         <small v-html="description" v-if="description"></small>

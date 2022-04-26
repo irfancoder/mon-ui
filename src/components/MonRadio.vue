@@ -1,7 +1,7 @@
 <template>
     <div class="radio-container">
         <label :class="`radio-label ${selected === index ? 'radio-label-selected' : ''}`" v-for="(option, index) in selection" :key="index" :for="index">
-            <input :id="index" type="radio" class="hidden" :name="name" :value="index" @change="handleEmit($event)" /> {{ option }}
+            <input :id="index" type="radio" class="hidden" :name="name" :value="index" :checked="index === selected" @change="handleEmit($event)" /> {{ option }}
         </label>
     </div>
 </template>
@@ -22,6 +22,7 @@ export default defineComponent({
     },
     methods: {
         handleEmit($event: Event) {
+            this.selected = ($event.target as HTMLInputElement).value
             this.$emit('update:modelValue', ($event.target as HTMLInputElement).value)
         }
     }

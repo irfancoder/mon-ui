@@ -1,17 +1,17 @@
 .radio {
     &-container {
-        @apply flex border border-black border-opacity-30 rounded h-8;
+        @apply inline-flex border border-black border-opacity-30 rounded;
     }
 
     &-label {
-        @apply flex text-sm items-center p-2 border-r border-opacity-30 border-black hover:bg-blue-100;
+        @apply flex items-center px-4 py-2 border-r border-opacity-30 border-black hover:bg-primary-100;
 
         &:last-child {
             @apply border-opacity-0;
         }
 
         &-selected {
-            @apply bg-blue-500 text-white hover:bg-blue-500;
+            @apply bg-primary-500 text-white hover:bg-primary-500;
         }
     }
 }

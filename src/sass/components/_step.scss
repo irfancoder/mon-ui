@@ -1,6 +1,10 @@
 .step {
-    @apply flex w-full justify-evenly list-none;
+    &-active {
+        @apply border-primary-500;
+    }
+
+    @apply flex w-full justify-evenly list-none pb-7;
     > li {
-        @apply list-none;
+        @apply list-none border-b;
     }
 }

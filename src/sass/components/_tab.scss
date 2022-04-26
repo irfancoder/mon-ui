@@ -1,10 +1,15 @@
 .tab {
-    @apply flex w-full justify-evenly list-none border-b;
+    @apply flex w-full justify-evenly list-none pb-7;
+
     > li {
-        @apply list-none;
+        @apply list-none cursor-pointer border-b;
     }
 
     &-active {
-        @apply text-blue-500 border-blue-600 border-b pb-4;
+        @apply border-primary-600;
+
+        & > h4 {
+            @apply text-primary-500;
+        }
     }
 }

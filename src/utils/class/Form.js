@@ -1,5 +1,5 @@
-import Errors from './Errors'
-import { post } from '@/utils'
+import Errors from './Errors.js'
+// import { post } from '@/utils/index.js'
 
 class Form {
     constructor (data) {
@@ -23,7 +23,7 @@ class Form {
     }
 
     async submit (url, callback = null) {
-        await post(url, this, callback)
+        // await post(url, this, callback)
     }
 
     length () {

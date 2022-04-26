@@ -1,13 +1,12 @@
 <template>
     <div class="w-full">
         <ul class="step">
-            <li v-for="(name, index) in stepNames" :key="index">
-                {{ name }}
-                <hr />
+            <li v-for="name in stepNames" :key="name" :class="{ 'step-active': selected === name }">
+                <h4>{{ name }}</h4>
             </li>
         </ul>
         <slot />
-        <div class="flex justify-between px-16">
+        <div class="flex justify-between px-16 mt-7">
             <button @click.prevent="selected = stepNames[--currentStep]" :disabled="currentStep === 0" class="btn btn-primary">Previous</button>
             <button @click.prevent="selected = stepNames[++currentStep]" v-if="currentStep !== stepNames.length - 1" class="btn btn-primary">Next</button>
             <button class="btn btn-primary" type="submit" v-else>Submit</button>

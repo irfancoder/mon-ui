@@ -2,23 +2,71 @@
 import MonButton from '@/components/MonButton.vue'
 import MonModal from '@/components/MonModal.vue'
 import MonDropdown from '@/components/MonDropdown.vue'
+import MonTab from '@/components/MonTab.vue'
+import MonStep from '@/components/MonStep.vue'
+import MonPanel from '@/components/MonPanel.vue'
+import MonInput from './components/MonInput.vue'
+import MonSelect from './components/MonSelect.vue'
+import MonRadio from './components/MonRadio.vue'
+import MonCheckbox from './components/MonCheckbox.vue'
+
+import Form from './utils/class/Form.js'
 
 export default {
     components: {
         MonButton,
         MonModal,
-        MonDropdown
+        MonDropdown,
+        MonStep,
+        MonTab,
+        MonPanel,
+        MonInput,
+        MonSelect,
+        MonRadio,
+        MonCheckbox
     },
     data() {
         return {
-            count: 0
+            count: 0,
+            form: new Form({
+                input_text: '',
+                input_password: '',
+                input_desc: '',
+                input_short: '',
+                input_textarea: '',
+                input: '',
+                inputGroup: '',
+                select: '',
+                radio: '',
+                checkbox: false
+            })
+        }
+    },
+    methods: {
+        dummy(el: string) {
+            const dummies: object = {
+                select: {
+                    jack: 'Jack',
+                    john: 'John',
+                    alice: 'Alice',
+                    ali: 'Ali'
+                },
+                radio: {
+                    maybank: 'Maybank',
+                    cimb: 'CIMB',
+                    bankrakyat: 'Bank Rakyat',
+                    standardchartered: 'Standard Chartered'
+                }
+            }
+
+            return dummies[el]
         }
     }
 }
 </script>
 
 <template>
-    <div class="space-y-7">
+    <div class="space-y-16 overflow-visible">
         <div class="space-y-4">
             <h3>Typography</h3>
             <table class="border-separate [border-spacing:0.75rem] w-full">
@@ -142,23 +190,69 @@ export default {
                 </ul>
             </mon-dropdown>
         </div>
-    </div>
 
-    <div class="space-y-4">
-        <h3>Toast (as Plugin)</h3>
-        <div class="flex space-x-2">
-            <mon-button @click="$toast.info('info ' + count++)">Info</mon-button>
-            <mon-button @click="$toast.success('success ' + count++)">Success</mon-button>
-            <mon-button @click="$toast.warning('warning ' + count++)">Warning</mon-button>
-            <mon-button @click="$toast.error('danger ' + count++)" variant="danger">Error</mon-button>
-            <mon-button @click="$toast.default('danger ' + count++)" variant="default">Default</mon-button>
+        <div class="space-y-4">
+            <h3>Toast (as Plugin)</h3>
+            <div class="flex space-x-2">
+                <mon-button @click="$toast.info('info ' + count++)">Info</mon-button>
+                <mon-button @click="$toast.success('success ' + count++)">Success</mon-button>
+                <mon-button @click="$toast.warning('warning ' + count++)">Warning</mon-button>
+                <mon-button @click="$toast.error('danger ' + count++)" variant="danger">Error</mon-button>
+                <mon-button @click="$toast.default('default ' + count++)" variant="default">Default</mon-button>
+            </div>
+        </div>
+
+        <div class="">
+            <h3>Stepper</h3>
+            <mon-step>
+                <template #default>
+                    <mon-panel name="Details" class="border p-7"> Details Panel </mon-panel>
+                    <mon-panel name="Pricing" class="border p-7"> Pricing Panel </mon-panel>
+                    <mon-panel name="Review" class="border p-7"> Review Panel </mon-panel>
+                </template>
+            </mon-step>
+        </div>
+
+        <div class="">
+            <h3>Tabs</h3>
+            <mon-tab>
+                <template #default>
+                    <mon-panel name="Details" class="border p-7"> Details Panel </mon-panel>
+                    <mon-panel name="Pricing" class="border p-7"> Pricing Panel </mon-panel>
+                    <mon-panel name="Review" class="border p-7"> Review Panel </mon-panel>
+                </template>
+            </mon-tab>
+        </div>
+
+        <div>
+            <h3>Input</h3>
+            <mon-input name="input_text" label="Username" v-model="form.input_text" :model="form"></mon-input>
+            <mon-input name="input_text" required label="Username" v-model="form.input_text" :model="form"></mon-input>
+            <mon-input name="input_password" type="password" label="Password" v-model="form.password" :model="form"></mon-input>
+            <mon-input name="input_desc" description="Sprinkle some description texts here" label="Best Food Reviewer? Sonny, Mark Wiens or Trevor" v-model="form.input_desc" :model="form"></mon-input>
+            <mon-input name="input_short" :max-char="20" label="Be brief!" v-model="form.input_short" :model="form"></mon-input>
+            <mon-input name="input_textarea" type="textarea" :maxChar="500" label="Be long!" v-model="form.input_textarea" :model="form"></mon-input>
+        </div>
+        <div>
+            <h3>Select</h3>
+            <mon-select name="select" label="Choose your best friend" v-model="form.select" :model="form" :selection="dummy('select')"></mon-select>
+        </div>
+        <div>
+            <h3>Radio</h3>
+            <mon-radio name="radio" label="Choose your best friend" v-model="form.radio" :model="form" :selection="dummy('radio')"></mon-radio>
+        </div>
+        <div>
+            <h3>Checkbox</h3>
+            <mon-checkbox name="checkbox" v-model="form.checkbox" :model="form">
+                <p>I agree to the terms and conditions. *Icon to be replaced</p>
+            </mon-checkbox>
         </div>
     </div>
 </template>
 
 <style>
 #app {
-    @apply container py-16 overflow-auto mx-auto;
+    @apply container py-16 mx-auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
