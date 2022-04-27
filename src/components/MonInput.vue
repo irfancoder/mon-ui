@@ -1,7 +1,7 @@
 <template>
     <div class="form-input">
-        <label :for="`input-${name}`" v-if="label"
-            >{{ label }}
+        <label :for="`input-${name}`" v-if="label">
+            {{ label }}
             <span v-if="required" class="text-red-500">*</span>
         </label>
 

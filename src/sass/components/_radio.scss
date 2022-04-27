@@ -4,14 +4,14 @@
     }
 
     &-label {
-        @apply flex items-center px-4 py-2 border-r border-opacity-30 border-black hover:bg-primary-100;
+        @apply flex items-center cursor-pointer px-4 py-2 border-r border-opacity-30 border-black hover:bg-primary-100;
 
         &:last-child {
             @apply border-opacity-0;
         }
 
         &-selected {
-            @apply bg-primary-500 text-white hover:bg-primary-500;
+            @apply bg-primary-700 cursor-default text-white hover:bg-primary-700;
         }
     }
 }

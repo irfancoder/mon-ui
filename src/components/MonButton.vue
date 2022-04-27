@@ -32,7 +32,7 @@ export default /*#__PURE__*/ defineComponent({
                 full: 'btn-full'
             }
 
-            return [base, this.disabled ? 'btn-disabled' : '', classes[this.variant as keyof typeof classes], sizes[this.size as keyof typeof sizes]].join(' ')
+            return [base, classes[this.variant as keyof typeof classes], sizes[this.size as keyof typeof sizes]].join(' ')
         }
     }
 })

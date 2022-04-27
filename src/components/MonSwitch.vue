@@ -1,20 +1,19 @@
 <template>
-    <div class="form-checkbox">
-        <input :id="name" type="checkbox" :class="inputClass" :name="name" :checked="modelValue" @change="handleEmit($event)" :disabled="disabled" />
+    <div>
+        <label :for="name" class="flex items-center cursor-pointer">
+            <div class="relative">
+                <!-- input -->
+                <input :id="name" type="checkbox" :class="inputClass" :name="name" :checked="modelValue" @change="handleEmit($event)" :disabled="disabled" />
+                <!-- line -->
+                <div :class="{ 'transition-all block border border-black border-opacity-30 w-14 h-8 rounded-full': true, 'bg-primary-500 border-opacity-0': modelValue }"></div>
+                <!-- dot -->
+                <div class="dot absolute left-1 top-1 border border-black border-opacity-30 bg-white w-6 h-6 rounded-full transition"></div>
+            </div>
 
-        <div class="flex flex-col">
-            <label :for="name" class="flex justify-start space-x-4">
-                <i
-                    :class="`fn fn-check text-base font-bold border rounded-full leading-none px-[4px] pt-[3px] pb-[2px] h-6
-                    ${modelValue ? 'bg-success-100 text-success-700 border-success-700' : 'bg-primary-50 text-gray-500 border-transparent'}`"
-                >
-                    ✓
-                </i>
+            <div class="ml-7">
                 <slot></slot>
-            </label>
-
-            <small v-if="description">{{ description }}</small>
-        </div>
+            </div>
+        </label>
 
         <span v-if="model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
     </div>
@@ -45,3 +44,10 @@ export default defineComponent({
     }
 })
 </script>
+
+
+<style lang="scss" scoped>
+input:checked ~ .dot {
+    @apply transform translate-x-full border-0;
+}
+</style>

@@ -9,6 +9,8 @@ import MonInput from './components/MonInput.vue'
 import MonSelect from './components/MonSelect.vue'
 import MonRadio from './components/MonRadio.vue'
 import MonCheckbox from './components/MonCheckbox.vue'
+import MonAccordion from './components/MonAccordion.vue'
+import MonSwitch from './components/MonSwitch.vue'
 
 import Form from './utils/class/Form.js'
 
@@ -23,7 +25,9 @@ export default {
         MonInput,
         MonSelect,
         MonRadio,
-        MonCheckbox
+        MonCheckbox,
+        MonAccordion,
+        MonSwitch
     },
     data() {
         return {
@@ -38,7 +42,8 @@ export default {
                 inputGroup: '',
                 select: '',
                 radio: '',
-                checkbox: false
+                checkbox: false,
+                switch: false
             })
         }
     },
@@ -185,8 +190,8 @@ export default {
 
             <mon-dropdown label="Open me" label-class="btn btn-primary" class="place-self-end">
                 <ul class="dropdown-menu" role="menu">
-                    <li><mon-button variant="secondary">Set as Default Web Application</mon-button></li>
-                    <li><mon-button variant="menu-danger">Delete Server</mon-button></li>
+                    <li><mon-button variant="secondary">Option A</mon-button></li>
+                    <li><mon-button variant="menu-danger">Option B</mon-button></li>
                 </ul>
             </mon-dropdown>
         </div>
@@ -246,6 +251,30 @@ export default {
             <mon-checkbox name="checkbox" v-model="form.checkbox" :model="form">
                 <p>I agree to the terms and conditions. *Icon to be replaced</p>
             </mon-checkbox>
+        </div>
+
+        <div>
+            <h3>Accordion</h3>
+
+            <mon-accordion title="How are you my friend?">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat rem sit voluptas ipsa deleniti sint velit nisi laborum, vero adipisci. Nam quos, soluta quasi quidem eveniet
+                    veritatis distinctio vero quisquam?
+                </p>
+            </mon-accordion>
+            <mon-accordion title="Any good stories?">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat rem sit voluptas ipsa deleniti sint velit nisi laborum, vero adipisci. Nam quos, soluta quasi quidem eveniet
+                    veritatis distinctio vero quisquam?
+                </p>
+            </mon-accordion>
+        </div>
+
+        <div class="space-y-4">
+            <h3>Switch</h3>
+
+            <mon-switch name="switch" :model="form" v-model="form.switch"> Edit Mode </mon-switch>
+            <mon-switch name="switch" :model="form" v-model="form.switch"> Enable Dark Mode </mon-switch>
         </div>
     </div>
 </template>

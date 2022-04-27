@@ -1,0 +1,13 @@
+.accordion {
+    @apply border-b rounded-md p-7;
+
+    &[open] > summary {
+        @apply pb-4;
+    }
+
+    &::-webkit-details-marker,
+    &::marker {
+        display: none;
+        content: "";
+    }
+}

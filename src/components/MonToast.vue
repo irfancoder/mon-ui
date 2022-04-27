@@ -2,7 +2,7 @@
     <transition name="toast">
         <div ref="root" role="alert" :class="`toast toast-${type}`" v-show="show">
             <div class="flex flex-row justify-end">
-                <button @click="show = false">X</button>
+                <button @click="dismiss">X</button>
             </div>
             <span> {{ message }} </span>
         </div>
