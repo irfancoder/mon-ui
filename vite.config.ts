@@ -12,4 +12,25 @@ export default defineConfig({
         extensions: ['ts']
     },
     base: '/mon-ui/'
+    /** For Library Production */
+    // build: {
+    //     lib: {
+    //         formats: ['es'],
+    //         entry: resolve(__dirname, 'index.ts'),
+    //     },
+    //     rollupOptions: {
+    //         input: {
+    //             index: './index.ts',
+    //             components: './src/components/index.ts',
+    //         },
+    //         external: ['vue'],
+    //         output: {
+    //             dir: './dist',
+    //             entryFileNames: ({ name: fileName }) => `mon-ui.${fileName}.js`,
+    //             globals: {
+    //                 vue: 'Vue'
+    //             }
+    //         }
+    //     }
+    // }
 })
