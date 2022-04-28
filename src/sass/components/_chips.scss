@@ -26,9 +26,6 @@ input:checked ~ {
     .chip-default {
         @apply bg-default-400 text-white;
     }
-    .chip-default {
-        @apply bg-default-400 text-white;
-    }
 
     .chip-danger {
         @apply bg-danger-700 text-white;
