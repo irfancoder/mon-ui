@@ -7,8 +7,8 @@
         </ul>
         <slot />
         <div class="flex justify-between px-16 mt-7">
-            <button @click.prevent="selected = stepNames[--currentStep]" :disabled="currentStep === 0" class="btn btn-primary">Previous</button>
-            <button @click.prevent="selected = stepNames[++currentStep]" v-if="currentStep !== stepNames.length - 1" class="btn btn-primary">Next</button>
+            <button @click.prevent="selected = stepNames && stepNames[--currentStep]" :disabled="currentStep === 0" class="btn btn-primary">Previous</button>
+            <button @click.prevent="selected = stepNames && stepNames[++currentStep]" v-if="currentStep !== (stepNames && stepNames.length - 1)" class="btn btn-primary">Next</button>
             <button class="btn btn-primary" type="submit" v-else>Submit</button>
         </div>
     </div>
@@ -25,7 +25,7 @@ export default defineComponent({
                 })
         )
         const currentStep = ref(0)
-        const selected = ref(stepNames.value && stepNames?.value[currentStep.value])
+        const selected = ref(stepNames.value && stepNames.value[currentStep.value])
 
         provide('selected', selected)
 

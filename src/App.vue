@@ -16,6 +16,33 @@ import MonChips from './components/MonChips.vue'
 import Form from './utils/class/Form.js'
 import MonInputGroup from './components/MonInputGroup.vue'
 
+const dummy = (el: string) => {
+    const dummies: { [name: string]: Record<string, string> } = {
+        select: {
+            jack: 'Jack',
+            john: 'John',
+            alice: 'Alice',
+            ali: 'Ali'
+        },
+        radio: {
+            maybank: 'Maybank',
+            cimb: 'CIMB',
+            bankrakyat: 'Bank Rakyat',
+            standardchartered: 'Standard Chartered'
+        },
+        chips: {
+            proton: 'Proton',
+            perodua: 'Perodua',
+            toyota: 'Toyota',
+            nissan: 'Nissan',
+            mazda: 'Mazda',
+            volvo: 'Volvo'
+        }
+    }
+
+    return dummies[el]
+}
+
 export default {
     components: {
         MonButton,
@@ -52,37 +79,12 @@ export default {
                 switch_2: false,
                 chips_1: [],
                 chips_2: [],
-                chips_3: this.dummy('chips')
+                chips_3: dummy('chips')
             })
         }
     },
     methods: {
-        dummy(el: string) {
-            const dummies: object = {
-                select: {
-                    jack: 'Jack',
-                    john: 'John',
-                    alice: 'Alice',
-                    ali: 'Ali'
-                },
-                radio: {
-                    maybank: 'Maybank',
-                    cimb: 'CIMB',
-                    bankrakyat: 'Bank Rakyat',
-                    standardchartered: 'Standard Chartered'
-                },
-                chips: {
-                    proton: 'Proton',
-                    perodua: 'Perodua',
-                    toyota: 'Toyota',
-                    nissan: 'Nissan',
-                    mazda: 'Mazda',
-                    volvo: 'Volvo'
-                }
-            }
-
-            return dummies[el]
-        }
+        dummy
     }
 }
 </script>
