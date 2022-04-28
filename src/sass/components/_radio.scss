@@ -1,10 +1,10 @@
 .radio {
     &-container {
-        @apply inline-flex border border-black border-opacity-30 rounded;
+        @apply flex md:inline-flex overflow-auto border border-black border-opacity-30 rounded;
     }
 
     &-label {
-        @apply flex items-center cursor-pointer px-4 py-2 border-r border-opacity-30 border-black hover:bg-primary-100;
+        @apply inline-flex items-center whitespace-nowrap cursor-pointer px-4 py-2 border-r border-opacity-30 border-black hover:bg-primary-100;
 
         &:last-child {
             @apply border-opacity-0;

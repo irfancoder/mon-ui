@@ -1,0 +1,27 @@
+.input {
+    &-group {
+        @apply pb-6 w-full flex flex-col;
+
+        label {
+            @apply pb-2;
+        }
+
+        &-content {
+            @apply flex flex-row relative;
+        }
+
+        &-left {
+            @apply px-4 text-base flex-grow text-black border border-gray-400 border-solid border-l-0 rounded-r rounded-l-none h-10 ring-1 ring-opacity-0 ring-primary-800 hover:ring-opacity-50 focus:ring-opacity-100;
+        }
+        &-right {
+            @apply px-4 text-base flex-grow text-black border border-gray-400 border-solid border-r-0 rounded-l rounded-r-none h-10 ring-1 ring-opacity-0 ring-primary-800 hover:ring-opacity-50 focus:ring-opacity-100;
+        }
+    }
+
+    &-prepend {
+        @apply flex items-center rounded-l bg-gray-200 border border-gray-400 border-solid border-r-0 text-black font-medium px-4;
+    }
+    &-append {
+        @apply flex items-center rounded-r bg-gray-200 border border-gray-400 border-solid border-l-0 text-black font-medium px-4;
+    }
+}

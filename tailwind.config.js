@@ -38,6 +38,7 @@ module.exports = {
 
             primary: colors.teal,
             danger: colors.red,
+            default: colors.gray,
             success: colors.green
         },
         extend: {

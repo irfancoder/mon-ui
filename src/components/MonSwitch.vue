@@ -5,7 +5,7 @@
                 <!-- input -->
                 <input :id="name" type="checkbox" :class="inputClass" :name="name" :checked="modelValue" @change="handleEmit($event)" :disabled="disabled" />
                 <!-- line -->
-                <div :class="{ 'transition-all block border border-black border-opacity-30 w-14 h-8 rounded-full': true, 'bg-primary-500 border-opacity-0': modelValue }"></div>
+                <div :class="{ 'transition-all block border border-black border-opacity-30 w-14 h-8 rounded-full': true, 'bg-primary-700 border-opacity-0': modelValue }"></div>
                 <!-- dot -->
                 <div class="dot absolute left-1 top-1 border border-black border-opacity-30 bg-white w-6 h-6 rounded-full transition"></div>
             </div>

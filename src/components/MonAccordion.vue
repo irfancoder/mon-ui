@@ -2,6 +2,7 @@
     <details class="accordion" :open="show">
         <summary class="flex justify-between" @click.prevent="toggle">
             <h4>{{ title }}</h4>
+            <!-- TODO: Replace icon with chevron up / down -->
             <button>{{ show ? 'X' : 'V' }}</button>
         </summary>
         <slot />

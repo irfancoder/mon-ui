@@ -11,8 +11,10 @@ import MonRadio from './components/MonRadio.vue'
 import MonCheckbox from './components/MonCheckbox.vue'
 import MonAccordion from './components/MonAccordion.vue'
 import MonSwitch from './components/MonSwitch.vue'
+import MonChips from './components/MonChips.vue'
 
 import Form from './utils/class/Form.js'
+import MonInputGroup from './components/MonInputGroup.vue'
 
 export default {
     components: {
@@ -27,7 +29,9 @@ export default {
         MonRadio,
         MonCheckbox,
         MonAccordion,
-        MonSwitch
+        MonSwitch,
+        MonChips,
+        MonInputGroup
     },
     data() {
         return {
@@ -40,10 +44,15 @@ export default {
                 input_textarea: '',
                 input: '',
                 inputGroup: '',
+                inputGroup_2: '',
                 select: '',
                 radio: '',
                 checkbox: false,
-                switch: false
+                switch_1: false,
+                switch_2: false,
+                chips_1: [],
+                chips_2: [],
+                chips_3: this.dummy('chips')
             })
         }
     },
@@ -61,6 +70,14 @@ export default {
                     cimb: 'CIMB',
                     bankrakyat: 'Bank Rakyat',
                     standardchartered: 'Standard Chartered'
+                },
+                chips: {
+                    proton: 'Proton',
+                    perodua: 'Perodua',
+                    toyota: 'Toyota',
+                    nissan: 'Nissan',
+                    mazda: 'Mazda',
+                    volvo: 'Volvo'
                 }
             }
 
@@ -71,10 +88,18 @@ export default {
 </script>
 
 <template>
-    <div class="space-y-16 overflow-visible">
+    <div class="mt-24 h-screen text-center space-y-7">
+        <h1>🐒 Mon UI</h1>
+        <h5>Short for Monyet UI</h5>
+        <h6>[Work in Progress]</h6>
+        <span>This is a collection of Vue components that make up my personal UI library. Enjoy! </span>
+
+        <p>Made by <a href="https://github.com/irfancoder" target="_blank">@irfancoder</a> 🌴</p>
+    </div>
+    <div class="space-y-32 overflow-visible">
         <div class="space-y-4">
             <h3>Typography</h3>
-            <table class="border-separate [border-spacing:0.75rem] w-full">
+            <table class="[border-spacing:0.75rem] w-full">
                 <thead>
                     <tr>
                         <th width="20%"></th>
@@ -143,6 +168,26 @@ export default {
             </table>
         </div>
 
+        <div class="space-y-4">
+            <h3>Color</h3>
+
+            <div class="flex flex-wrap gap-7">
+                <div class="h-20 w-20 bg-primary-100 rounded-md hover:ring-1 ring-primary-800 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-primary-700 rounded-md hover:ring-1 ring-primary-800 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-primary-800 rounded-md hover:ring-1 ring-primary-800 ring-offset-1"></div>
+            </div>
+            <div class="flex flex-wrap gap-7">
+                <div class="h-20 w-20 bg-danger-100 rounded-md hover:ring-1 ring-danger-800 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-danger-700 rounded-md hover:ring-1 ring-danger-800 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-danger-800 rounded-md hover:ring-1 ring-danger-800 ring-offset-1"></div>
+            </div>
+            <div class="flex flex-wrap gap-7">
+                <div class="h-20 w-20 bg-default-100 rounded-md hover:ring-1 ring-default-500 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-default-400 rounded-md hover:ring-1 ring-default-500 ring-offset-1"></div>
+                <div class="h-20 w-20 bg-default-500 rounded-md hover:ring-1 ring-default-500 ring-offset-1"></div>
+            </div>
+        </div>
+
         <div class="space-x-2">
             <h3>Button</h3>
             <p>Sizes</p>
@@ -198,7 +243,7 @@ export default {
 
         <div class="space-y-4">
             <h3>Toast (as Plugin)</h3>
-            <div class="flex space-x-2">
+            <div class="flex gap-2 flex-wrap">
                 <mon-button @click="$toast.info('info ' + count++)">Info</mon-button>
                 <mon-button @click="$toast.success('success ' + count++)">Success</mon-button>
                 <mon-button @click="$toast.warning('warning ' + count++)">Warning</mon-button>
@@ -230,30 +275,6 @@ export default {
         </div>
 
         <div>
-            <h3>Input</h3>
-            <mon-input name="input_text" label="Username" v-model="form.input_text" :model="form"></mon-input>
-            <mon-input name="input_text" required label="Username" v-model="form.input_text" :model="form"></mon-input>
-            <mon-input name="input_password" type="password" label="Password" v-model="form.password" :model="form"></mon-input>
-            <mon-input name="input_desc" description="Sprinkle some description texts here" label="Best Food Reviewer? Sonny, Mark Wiens or Trevor" v-model="form.input_desc" :model="form"></mon-input>
-            <mon-input name="input_short" :max-char="20" label="Be brief!" v-model="form.input_short" :model="form"></mon-input>
-            <mon-input name="input_textarea" type="textarea" :maxChar="500" label="Be long!" v-model="form.input_textarea" :model="form"></mon-input>
-        </div>
-        <div>
-            <h3>Select</h3>
-            <mon-select name="select" label="Choose your best friend" v-model="form.select" :model="form" :selection="dummy('select')"></mon-select>
-        </div>
-        <div>
-            <h3>Radio</h3>
-            <mon-radio name="radio" label="Choose your best friend" v-model="form.radio" :model="form" :selection="dummy('radio')"></mon-radio>
-        </div>
-        <div>
-            <h3>Checkbox</h3>
-            <mon-checkbox name="checkbox" v-model="form.checkbox" :model="form">
-                <p>I agree to the terms and conditions. *Icon to be replaced</p>
-            </mon-checkbox>
-        </div>
-
-        <div>
             <h3>Accordion</h3>
 
             <mon-accordion title="How are you my friend?">
@@ -270,18 +291,55 @@ export default {
             </mon-accordion>
         </div>
 
+        <div>
+            <h3>Input</h3>
+            <mon-input name="input_text" label="Username" v-model="form.input_text" :model="form"></mon-input>
+            <mon-input name="input_text" required label="Username" v-model="form.input_text" :model="form"></mon-input>
+            <mon-input name="input_password" type="password" label="Password" v-model="form.password" :model="form"></mon-input>
+            <mon-input name="input_desc" description="Sprinkle some description texts here" label="Best Food Reviewer? Sonny, Mark Wiens or Trevor" v-model="form.input_desc" :model="form"></mon-input>
+            <mon-input name="input_short" :max-char="20" label="Be brief!" v-model="form.input_short" :model="form"></mon-input>
+            <mon-input name="input_textarea" type="textarea" :maxChar="500" label="Be long!" v-model="form.input_textarea" :model="form"></mon-input>
+            <mon-input-group name="inputGroup" type="number" label="How much does 1 banana weigh?" v-model="form.inputGroup" unit="kilogram (kg)" placement="right" :model="form"></mon-input-group>
+            <mon-input-group name="inputGroup_2" type="number" label="Title" v-model="form.inputGroup" unit="Mr/Ms" placement="left" :model="form"></mon-input-group>
+        </div>
+        <div>
+            <h3>Select</h3>
+            <mon-select name="select" label="Choose your best friend" v-model="form.select" :model="form" :selection="dummy('select')"></mon-select>
+        </div>
+        <div>
+            <h3>Radio</h3>
+            <mon-radio name="radio" label="Choose your best friend" v-model="form.radio" :model="form" :selection="dummy('radio')"></mon-radio>
+        </div>
+        <div>
+            <h3>Checkbox</h3>
+            <mon-checkbox name="checkbox" v-model="form.checkbox" :model="form">
+                <p>I agree to the terms and conditions. *Icon to be replaced</p>
+            </mon-checkbox>
+        </div>
+
+        <div class="space-y-4">
+            <h3>Chips</h3>
+            <p>Filter Mode</p>
+            <mon-chips name="chips_1" :model="form" v-model="form.chips_1" :selection="dummy('chips')" chipClass="chip-default"></mon-chips>
+            <mon-chips name="chips_2" :model="form" v-model="form.chips_2" :selection="dummy('chips')" chipClass="chip-primary"></mon-chips>
+
+            <p>Editable Mode</p>
+
+            <mon-chips name="chips_3" mode="edit" :model="form" v-model="form.chips_3" :selection="form.chips_3" chipClass="chip-danger"></mon-chips>
+        </div>
+
         <div class="space-y-4">
             <h3>Switch</h3>
 
-            <mon-switch name="switch" :model="form" v-model="form.switch"> Edit Mode </mon-switch>
-            <mon-switch name="switch" :model="form" v-model="form.switch"> Enable Dark Mode </mon-switch>
+            <mon-switch name="switch_1" :model="form" v-model="form.switch_1"> Edit Mode </mon-switch>
+            <mon-switch name="switch_2" :model="form" v-model="form.switch_2"> Enable Dark Mode </mon-switch>
         </div>
     </div>
 </template>
 
 <style>
 #app {
-    @apply container py-16 mx-auto;
+    @apply container py-16 mx-auto px-7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;

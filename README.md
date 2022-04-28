@@ -5,6 +5,7 @@ A Vue-based UI component library. Still a work in progress. Will update from tim
 Currently contains:
 
 - Typography
+- Color
 - Button
 - Modal
 - Dropdown
@@ -12,22 +13,23 @@ Currently contains:
 - Form Handler Class
 - Input
 - Input Group
+- Input / Filter Chips
+- Input Switch
 - Checkbox
 - Radio
 - Select
 - Stepper + Panel
 - Tabs + Panel
+- Accordion
 
 ## Roadmap
 - Add more components
-    - Accordion / Collapse
     - Breadcrumb
     - Table
-    - Badge / Chip
+    - Badge
     - Tooltip
     - Progress Bar
     - Input &lt;upload>
-    - Input Switch
     - Input Slider
 - Common `utils` library
 

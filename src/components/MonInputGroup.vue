@@ -70,5 +70,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@use '@/sass/components/input';
+@use '@/sass/components/inputgroup';
 </style>

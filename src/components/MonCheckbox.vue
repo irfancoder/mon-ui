@@ -4,6 +4,7 @@
 
         <div class="flex flex-col">
             <label :for="name" class="flex justify-start space-x-4">
+                <!-- TODO: Replace icon  -->
                 <i
                     :class="`fn fn-check text-base font-bold border rounded-full leading-none px-[4px] pt-[3px] pb-[2px] h-6
                     ${modelValue ? 'bg-success-100 text-success-700 border-success-700' : 'bg-primary-50 text-gray-500 border-transparent'}`"

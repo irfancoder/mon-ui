@@ -19,7 +19,7 @@ h5 {
 }
 
 h6 {
-    @apply text-base uppercase tracking-wider font-semibold max-w-prose text-gray-500 dark:text-gray-50;
+    @apply text-base uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-50;
 }
 
 p {
@@ -27,7 +27,7 @@ p {
 }
 
 span {
-    @apply font-normal text-base text-gray-800 dark:text-gray-100;
+    @apply inline-block font-normal text-base text-gray-800 dark:text-gray-100;
 }
 
 label {
@@ -35,7 +35,7 @@ label {
 }
 
 small {
-    @apply text-sm font-normal text-gray-800 dark:text-gray-50;
+    @apply inline-block text-sm font-normal text-gray-800 dark:text-gray-50;
 }
 
 b,
