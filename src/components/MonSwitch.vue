@@ -2,11 +2,15 @@
     <div>
         <label :for="name" class="flex items-center cursor-pointer">
             <div class="relative">
-                <!-- input -->
-                <input :id="name" type="checkbox" :class="inputClass" :name="name" :checked="modelValue" @change="handleEmit($event)" :disabled="disabled" />
-                <!-- line -->
+                <input
+                    :id="name"
+                    type="checkbox"
+                    :class="inputClass"
+                    :name="name"
+                    :checked="modelValue"
+                    :disabled="disabled"
+                    @change="handleEmit($event)">
                 <div :class="{ 'transition-all block border border-black border-opacity-30 w-14 h-8 rounded-full': true, 'bg-primary-700 border-opacity-0': modelValue }"></div>
-                <!-- dot -->
                 <div class="dot absolute left-1 top-1 border border-black border-opacity-30 bg-white w-6 h-6 rounded-full transition"></div>
             </div>
 
@@ -28,13 +32,15 @@ export default defineComponent({
         inputClass: { type: String, default: 'hidden' },
         description: { type: String, default: '' },
         placeholder: { type: String, default: '' },
-        value: Boolean,
+        value: { type: Boolean, required: false, default: false },
         tooltip: { type: String, default: '' },
         name: { type: String, default: '' },
         model: { type: Object, required: true },
         modelValue: { type: Boolean, required: true },
         disabled: { type: Boolean, default: false, required: false }
     },
+    
+    emits: ['update:modelValue'],
 
     methods: {
         handleEmit($event: Event) {

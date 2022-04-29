@@ -1,5 +1,7 @@
 <template>
-    <button :class="applyClass" :disabled="disabled"><slot></slot></button>
+    <button :class="applyClass" :disabled="disabled">
+        <slot></slot>
+    </button>
 </template>
 
 <script lang="ts">

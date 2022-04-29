@@ -3,8 +3,14 @@
         <!-- Edit Mode -->
         <template v-if="editMode">
             <div v-for="[index, item] in selected" :key="index">
-                <input type="checkbox" :id="`${name + '_' + index}`" class="hidden" :value="index" :checked="true" :disabled="true" />
-                <label :for="`${name + '_' + index}`" :class="{ chip: true, [chipClass]: chipClass }">
+                <input
+                    :id="`${name + '_' + index}`"
+                    type="checkbox"
+                    class="hidden"
+                    :value="index"
+                    :checked="true"
+                    :disabled="true">
+                <label :for="`${name + '_' + index}`" :class="`chip chip-${variant}`">
                     {{ item }}
                     <button class="ml-3" @click.prevent="handleRemove(index)">x</button>
                 </label>
@@ -12,7 +18,13 @@
             <div class="relative">
                 <!-- TODO: Replace icon '+' -->
                 <span class="text-default-400 absolute left-2 top-0.5">+</span>
-                <input type="text" ref="to_add" placeholder="Press Enter to add" class="chip chip-add" id="new_chip" @keydown.enter="handleAdd($event)" />
+                <input
+                    id="new_chip"
+                    ref="to_add"
+                    type="text"
+                    placeholder="Press Enter to add"
+                    class="chip chip-add"
+                    @keydown.enter="handleAdd($event)">
             </div>
         </template>
 
@@ -20,15 +32,14 @@
         <template v-else>
             <div v-for="(item, index) in selection" :key="index">
                 <input
-                    type="checkbox"
                     :id="`${name + '_' + index}`"
+                    type="checkbox"
                     class="hidden"
                     :value="index"
                     :checked="isActive(index)"
-                    @change="mode === 'filter' && handleEmit($event)"
                     :disabled="mode === 'edit'"
-                />
-                <label :for="`${name + '_' + index}`" :class="{ chip: true, [chipClass]: chipClass }">
+                    @change="mode === 'filter' && handleEmit($event)">
+                <label :for="`${name + '_' + index}`" :class="`chip chip-${variant}`">
                     {{ item }}
                 </label>
             </div>
@@ -42,13 +53,16 @@ import { camelize } from '@/utils/index.ts'
 
 export default defineComponent({
     props: {
-        selection: { type: Object, required: false },
+        selection: { type: Object, required: false, default: () => {} },
         name: { type: String, required: true },
         model: { type: Object, required: true },
         modelValue: { type: Object, required: true },
-        chipClass: { type: String, required: false, default: 'chip-primary' },
+        variant: { type: String, required: false, default: 'primary' },
         mode: { type: String, required: false, default: 'filter', validator: (prop: string) => ['filter', 'edit'].includes(prop) }
     },
+    
+    emits: ['update:modelValue'],
+
     data() {
         return {
             selected: this.mode === 'edit' ? (new Map(Object.entries(this.modelValue)) as Map<string, string>) : (new Set() as Set<string>)
@@ -61,11 +75,8 @@ export default defineComponent({
         }
     },
 
-    mounted() {
-        console.log(this.selected)
-    },
     methods: {
-        /*Filter Mode */
+        /* Filter Mode */
         handleEmit($event: Event) {
             const value = ($event.target as HTMLInputElement).value
             if (this.isActive(value)) this.selected.delete(value)
@@ -75,6 +86,7 @@ export default defineComponent({
         isActive(index: string) {
             return this.selected.has(index)
         },
+        
         /* Editable Mode */
         handleAdd($event: Event) {
             const value = ($event.target as HTMLInputElement).value

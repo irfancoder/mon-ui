@@ -7,9 +7,15 @@
         </ul>
         <slot />
         <div class="flex justify-between px-16 mt-7">
-            <button @click.prevent="selected = stepNames && stepNames[--currentStep]" :disabled="currentStep === 0" class="btn btn-primary">Previous</button>
-            <button @click.prevent="selected = stepNames && stepNames[++currentStep]" v-if="currentStep !== (stepNames && stepNames.length - 1)" class="btn btn-primary">Next</button>
-            <button class="btn btn-primary" type="submit" v-else>Submit</button>
+            <button :disabled="currentStep === 0" class="btn btn-primary" @click.prevent="selected = stepNames && stepNames[--currentStep]">
+                Previous
+            </button>
+            <button v-if="currentStep !== (stepNames && stepNames.length - 1)" class="btn btn-primary" @click.prevent="selected = stepNames && stepNames[++currentStep]">
+                Next
+            </button>
+            <button v-else class="btn btn-primary" type="submit">
+                Submit
+            </button>
         </div>
     </div>
 </template>

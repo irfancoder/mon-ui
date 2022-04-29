@@ -1,7 +1,11 @@
 <template>
     <div>
         <ul class="tab">
-            <li v-for="name in tabNames" :key="name" @click="selected = name" :class="{ 'tab-active': selected === name }">
+            <li
+                v-for="name in tabNames"
+                :key="name"
+                :class="{ 'tab-active': selected === name }"
+                @click="selected = name">
                 <h4>{{ name }}</h4>
             </li>
         </ul>

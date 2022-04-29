@@ -14,7 +14,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     props: {
-        title: { type: String, required: false }
+        title: { type: String, required: false, default: 'Title goes here' }
     },
     data() {
         return {

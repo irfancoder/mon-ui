@@ -1,17 +1,24 @@
 <template>
     <div class="input-group">
-        <label :for="`input-${name}`" v-if="label">{{ label }}</label>
+        <label v-if="label" :for="`input-${name}`">{{ label }}</label>
 
         <div class="input-group-content">
-            <div class="input-prepend" v-if="placement === 'left'">
+            <div v-if="placement === 'left'" class="input-prepend">
                 <span>{{ unit }}</span>
             </div>
-            <input :id="`input-${name}`" :class="`input-group-${placement}`" :type="type" :name="name" :placeholder="placeholder" :disabled="disabled" autocomplete="on" />
-            <div class="input-append" v-if="placement === 'right'">
+            <input
+                :id="`input-${name}`"
+                :class="`input-group-${placement}`"
+                :type="type"
+                :name="name"
+                :placeholder="placeholder"
+                :disabled="disabled"
+                autocomplete="on">
+            <div v-if="placement === 'right'" class="input-append">
                 <span>{{ unit }}</span>
             </div>
         </div>
-        <small v-html="description" v-if="description"></small>
+        <small v-if="description">{{ description }}</small>
 
         <!-- Validation message here [WIP] -->
         <span v-if="model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
@@ -34,10 +41,12 @@ export default defineComponent({
         maxChar: { type: Number, default: null },
         name: { type: String, default: '' },
         model: { type: Object, required: true },
-        modelValue: { required: true },
+        modelValue: { type: String, required: true },
         type: { type: String, required: false, default: 'text' },
         disabled: { type: Boolean, default: false, required: false }
     },
+    
+    emits: ['update:modelValue'],
 
     data() {
         return {

@@ -1,8 +1,14 @@
 <template>
     <transition name="toast">
-        <div ref="root" role="alert" :class="`toast toast-${type}`" v-show="show">
+        <div
+            v-show="show"
+            ref="root"
+            role="alert"
+            :class="`toast toast-${type}`">
             <div class="flex flex-row justify-end">
-                <button @click="dismiss">X</button>
+                <button @click="dismiss">
+                    X
+                </button>
             </div>
             <span> {{ message }} </span>
         </div>

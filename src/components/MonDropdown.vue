@@ -1,5 +1,5 @@
 <template>
-    <div class="dropdown" tabindex="0" v-click-away="!disableClickAway && closeDropdown">
+    <div v-click-away="!disableClickAway && closeDropdown" class="dropdown" tabindex="0">
         <transition
             v-if="!persistent"
             :enter-active-class="enterActiveClass"
@@ -9,10 +9,10 @@
             :leave-class="leaveClass"
             :leave-to-class="leaveToClass"
             @enter="enterHook"
-            @after-leave="afterLeaveHook"
-        >
+            @after-leave="afterLeaveHook">
             <div v-if="show" :class="`${contentClass} dropdown-anchor-${anchor} ${dropdownDirection}`">
-                <slot :close="closeDropdown" :toggle="toggleDropdown"> </slot>
+                <slot :close="closeDropdown" :toggle="toggleDropdown">
+                </slot>
             </div>
         </transition>
         <transition
@@ -24,18 +24,27 @@
             :leave-class="leaveClass"
             :leave-to-class="leaveToClass"
             @enter="enterHook"
-            @after-leave="afterLeaveHook"
-        >
+            @after-leave="afterLeaveHook">
             <div v-show="show" :class="`${contentClass} dropdown-anchor-${anchor} ${dropdownDirection}`">
-                <slot :close="closeDropdown" :toggle="toggleDropdown"> </slot>
+                <slot :close="closeDropdown" :toggle="toggleDropdown">
+                </slot>
             </div>
         </transition>
 
-        <button v-if="!$slots.trigger" @click="toggleDropdown" aria-haspopup="true" aria-expanded="true" :class="labelClass">
+        <button
+            v-if="!$slots.trigger"
+            aria-haspopup="true"
+            aria-expanded="true"
+            :class="labelClass"
+            @click="toggleDropdown">
             {{ label }}
         </button>
         <div v-else tabindex="0">
-            <slot name="trigger" :open="openDropdown" :close="closeDropdown" :toggle="toggleDropdown"></slot>
+            <slot
+                name="trigger"
+                :open="openDropdown"
+                :close="closeDropdown"
+                :toggle="toggleDropdown"></slot>
         </div>
     </div>
 </template>
@@ -44,9 +53,13 @@
 import { defineComponent } from 'vue'
 import { directive } from 'click-outside-vue3'
 export default /*#__PURE__*/ defineComponent({
+
+    directives: {
+        'click-away': directive
+    },
     props: {
-        label: { type: String, required: false },
-        labelClass: { type: String, required: false },
+        label: { type: String, required: false, default: 'Label goes here' },
+        labelClass: { type: String, required: false, default: 'btn btn-primary' },
         contentClass: { type: String, required: false, default: 'dropdown-content' },
         enterActiveClass: { type: String, required: false, default: 'dropdown-enter-active' },
         enterClass: { type: String, required: false, default: 'dropdown-enter' },
@@ -61,16 +74,14 @@ export default /*#__PURE__*/ defineComponent({
         disableClickAway: { type: Boolean, required: false, default: false },
         disableEsc: { type: Boolean, required: false, default: false }
     },
+    
+    emits: ['before-close', 'before-open', 'after-open', 'after-close'],
+
     data() {
         return {
             show: false,
             visible: true
         }
-    },
-
-    mounted() {
-        if (this.openOnMount) this.openDropdown()
-        if (!this.disableEsc) document.addEventListener('keydown', this.bindEscKey)
     },
 
     computed: {
@@ -80,12 +91,13 @@ export default /*#__PURE__*/ defineComponent({
         }
     },
 
-    beforeUnmount() {
-        if (!this.disableEsc) document.removeEventListener('keydown', this.bindEscKey)
+    mounted() {
+        if (this.openOnMount) this.openDropdown()
+        if (!this.disableEsc) document.addEventListener('keydown', this.bindEscKey)
     },
 
-    directives: {
-        'click-away': directive
+    beforeUnmount() {
+        if (!this.disableEsc) document.removeEventListener('keydown', this.bindEscKey)
     },
 
     methods: {

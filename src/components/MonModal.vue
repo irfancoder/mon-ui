@@ -2,21 +2,31 @@
     <div>
         <!-- Button / Trigger Slot -->
         <slot name="trigger" :open="openModal"></slot>
-        <button v-if="label" :class="labelClass" @click="openModal">{{ label }}</button>
+        <button v-if="label" :class="labelClass" @click="openModal">
+            {{ label }}
+        </button>
 
         <!-- Non-Persistent Modal -->
-        <transition name="modal" v-if="!persistent">
-            <div :class="backdropClass" v-if="show" @click.self="!disableClickAway ? closeModal() : null">
+        <transition v-if="!persistent" name="modal">
+            <div v-if="show" :class="backdropClass" @click.self="!disableClickAway ? closeModal() : null">
                 <div :class="modalClass">
                     <div>
                         <div v-if="!$slots.header" :class="headerClass">
-                            <h4 :class="titleClass">{{ title }}</h4>
-                            <button @click="closeModal">X</button>
+                            <h4 :class="titleClass">
+                                {{ title }}
+                            </h4>
+                            <button @click="closeModal">
+                                X
+                            </button>
                         </div>
                         <slot v-else name="header" :close="closeModal"></slot>
                     </div>
 
-                    <slot v-if="!!$slots.custom" name="custom" :open="openModal" :close="closeModal"></slot>
+                    <slot
+                        v-if="!!$slots.custom"
+                        name="custom"
+                        :open="openModal"
+                        :close="closeModal"></slot>
                     <template v-else>
                         <div class="modal-wrapper">
                             <div :class="bodyClass">
@@ -24,7 +34,9 @@
                             </div>
                             <div :class="footerClass">
                                 <slot name="footer" :close="closeModal">
-                                    <button class="btn btn-default" @click="closeModal">Close</button>
+                                    <button class="btn btn-default" @click="closeModal">
+                                        Close
+                                    </button>
                                 </slot>
                             </div>
                         </div>
@@ -34,17 +46,25 @@
         </transition>
 
         <!-- Persistent Modal -->
-        <transition name="modal" v-else>
-            <div :class="backdropClass" v-show="show" @click.self="!disableClickAway ? closeModal() : null">
+        <transition v-else name="modal">
+            <div v-show="show" :class="backdropClass" @click.self="!disableClickAway ? closeModal() : null">
                 <div :class="modalClass">
                     <div>
                         <div v-if="!$slots.header" :class="headerClass">
-                            <h4 :class="titleClass">{{ title }}</h4>
-                            <button @click="closeModal">X</button>
+                            <h4 :class="titleClass">
+                                {{ title }}
+                            </h4>
+                            <button @click="closeModal">
+                                X
+                            </button>
                         </div>
                         <slot name="header" :close="closeModal"></slot>
                     </div>
-                    <slot v-if="!!$slots.custom" name="custom" :open="openModal" :close="closeModal"></slot>
+                    <slot
+                        v-if="!!$slots.custom"
+                        name="custom"
+                        :open="openModal"
+                        :close="closeModal"></slot>
                     <template v-else>
                         <div class="modal-wrapper">
                             <div :class="bodyClass">
@@ -52,7 +72,9 @@
                             </div>
                             <div :class="footerClass">
                                 <slot name="footer" :close="closeModal">
-                                    <button class="btn btn-default" @click="closeModal">Close</button>
+                                    <button class="btn btn-default" @click="closeModal">
+                                        Close
+                                    </button>
                                 </slot>
                             </div>
                         </div>
@@ -68,9 +90,9 @@ import { defineComponent } from 'vue'
 
 export default /*#__PURE__*/ defineComponent({
     props: {
-        title: { type: String, required: false },
+        title: { type: String, required: false, default: 'Title goes here' },
         titleClass: { type: String, required: false, default: 'modal-title' },
-        label: { type: String, required: false },
+        label: { type: String, required: false, default: 'Label goes here' },
         labelClass: { type: String, required: false, default: '' },
         backdropClass: { type: String, required: false, default: 'modal' },
         modalClass: { type: String, required: false, default: 'modal-container' },
@@ -83,6 +105,9 @@ export default /*#__PURE__*/ defineComponent({
         disableEsc: { type: Boolean, required: false, default: false },
         openOnMount: { type: Boolean, required: false, default: false }
     },
+
+    emits: ['before-open', 'after-open', 'before-close', 'after-close'],
+    
     data() {
         return {
             show: false

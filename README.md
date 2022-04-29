@@ -21,6 +21,7 @@ Currently contains:
 - Stepper + Panel
 - Tabs + Panel
 - Accordion
+- Progress Bar
 
 [Demo](https://irfancoder.github.io/mon-ui/)
 
@@ -30,7 +31,6 @@ Currently contains:
     - Table
     - Badge
     - Tooltip
-    - Progress Bar
     - Input &lt;upload>
     - Input Slider
 - Common `utils` library

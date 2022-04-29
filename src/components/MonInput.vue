@@ -1,6 +1,6 @@
 <template>
     <div class="form-input">
-        <label :for="`input-${name}`" v-if="label">
+        <label v-if="label" :for="`input-${name}`">
             {{ label }}
             <span v-if="required" class="text-red-500">*</span>
         </label>
@@ -13,44 +13,41 @@
                 :class="inputClass"
                 :name="name"
                 :maxlength="maxChar"
-                @input="handleEmit($event)"
                 :placeholder="placeholder"
                 :disabled="disabled"
                 autocomplete="on"
-            />
+                @input="handleEmit($event)">
 
             <textarea
                 v-else-if="type === 'textarea'"
-                :name="name"
                 :id="`input-${name}`"
+                :name="name"
                 cols="30"
                 rows="10"
                 :class="inputClass"
                 :maxlength="maxChar"
-                @input="handleEmit($event)"
                 :placeholder="placeholder"
                 :disabled="disabled"
                 autocomplete="on"
-            />
+                @input="handleEmit($event)" />
             <input
                 v-else-if="type === 'password'"
                 :id="`input-${name}`"
                 :type="mType"
                 :class="inputClass"
                 :name="name"
-                @input="handleEmit($event)"
                 :placeholder="placeholder"
                 :disabled="disabled"
                 autocomplete="on"
-            />
-            <label v-if="type === 'password'" @click="toggleVisibility" class="form-showpassword anim-default">{{ showPassword ? 'Hide' : 'Show' }}</label>
+                @input="handleEmit($event)">
+            <label v-if="type === 'password'" class="form-showpassword anim-default" @click="toggleVisibility">{{ showPassword ? 'Hide' : 'Show' }}</label>
             <span v-if="maxChar" class="absolute anim-default right-0 bottom-0 px-4 pb-2">{{ maxChar - charLength }}</span>
         </div>
 
-        <small v-html="description" v-if="description"></small>
+        <small v-if="description">{{ description }}</small>
 
         <!-- Validation message here [WIP] -->
-        <span v-if="model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
+        <span v-if="model && model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
     </div>
 </template>
 
@@ -69,10 +66,12 @@ export default defineComponent({
         maxChar: { type: Number, default: null },
         name: { type: String, default: '' },
         model: { type: Object, required: true },
-        modelValue: { required: true },
+        modelValue: { type: String, required: true },
         type: { type: String, required: false, default: 'text' },
         disabled: { type: Boolean, default: false, required: false }
     },
+    
+    emits: ['update:modelValue'],
 
     data() {
         return {

@@ -22,9 +22,9 @@ class Form {
         }
     }
 
-    async submit (url, callback = null) {
-        // await post(url, this, callback)
-    }
+    // async submit (url, callback = null) {
+    //     await post(url, this, callback)
+    // }
 
     length () {
         return Object.keys(this).length

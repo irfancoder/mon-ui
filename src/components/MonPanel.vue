@@ -7,7 +7,9 @@
 <script lang="ts">
 import { inject, defineComponent } from 'vue'
 export default defineComponent({
-    props: ['name'],
+    props: {
+        name: { type: String, required: true }
+    },
     setup() {
         const selected = inject('selected')
         return {

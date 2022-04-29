@@ -12,6 +12,7 @@ import MonCheckbox from './components/MonCheckbox.vue'
 import MonAccordion from './components/MonAccordion.vue'
 import MonSwitch from './components/MonSwitch.vue'
 import MonChips from './components/MonChips.vue'
+import MonProgress from './components/MonProgress.vue'
 
 import Form from './utils/class/Form.js'
 import MonInputGroup from './components/MonInputGroup.vue'
@@ -58,7 +59,8 @@ export default {
         MonAccordion,
         MonSwitch,
         MonChips,
-        MonInputGroup
+        MonInputGroup,
+        MonProgress
     },
     data() {
         return {
@@ -193,32 +195,66 @@ export default {
         <div class="space-x-2">
             <h3>Button</h3>
             <p>Sizes</p>
-            <mon-button size="sm">sm</mon-button>
-            <mon-button size="md">md</mon-button>
-            <mon-button size="lg">lg</mon-button>
-            <mon-button size="xl">xl</mon-button>
+            <mon-button size="sm">
+                sm
+            </mon-button>
+            <mon-button size="md">
+                md
+            </mon-button>
+            <mon-button size="lg">
+                lg
+            </mon-button>
+            <mon-button size="xl">
+                xl
+            </mon-button>
         </div>
-        <mon-button class="mt-4" size="full">full</mon-button>
+        <mon-button class="mt-4" size="full">
+            full
+        </mon-button>
         <div class="space-x-2">
             <p>Variants</p>
-            <mon-button variant="primary">primary</mon-button>
-            <mon-button variant="secondary">secondary</mon-button>
-            <mon-button variant="default">default</mon-button>
-            <mon-button variant="danger">danger</mon-button>
-            <mon-button variant="link">link</mon-button>
+            <mon-button variant="primary">
+                primary
+            </mon-button>
+            <mon-button variant="secondary">
+                secondary
+            </mon-button>
+            <mon-button variant="default">
+                default
+            </mon-button>
+            <mon-button variant="danger">
+                danger
+            </mon-button>
+            <mon-button variant="link">
+                link
+            </mon-button>
         </div>
         <div class="space-x-2">
             <p>State: Disabled</p>
-            <mon-button disabled variant="primary">primary</mon-button>
-            <mon-button disabled variant="secondary">secondary</mon-button>
-            <mon-button disabled variant="default">default</mon-button>
-            <mon-button disabled variant="danger">danger</mon-button>
-            <mon-button disabled variant="link">link</mon-button>
+            <mon-button disabled variant="primary">
+                primary
+            </mon-button>
+            <mon-button disabled variant="secondary">
+                secondary
+            </mon-button>
+            <mon-button disabled variant="default">
+                default
+            </mon-button>
+            <mon-button disabled variant="danger">
+                danger
+            </mon-button>
+            <mon-button disabled variant="link">
+                link
+            </mon-button>
         </div>
 
         <div class="flex flex-col">
             <h3>Modal</h3>
-            <mon-modal label="Open me" title="Title goes here" label-class="btn btn-primary" class="place-self-end">
+            <mon-modal
+                label="Open me"
+                title="Title goes here"
+                label-class="btn btn-primary"
+                class="place-self-end">
                 <template #body>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nesciunt doloremque, dolore eligendi ad, culpa eveniet accusamus facilis itaque placeat sit praesentium
@@ -227,8 +263,12 @@ export default {
                     </p>
                 </template>
                 <template #footer="{ close }">
-                    <mon-button @click="close" variant="link">Close</mon-button>
-                    <mon-button @click="close" variant="primary">Make Payment</mon-button>
+                    <mon-button variant="link" @click="close">
+                        Close
+                    </mon-button>
+                    <mon-button variant="primary" @click="close">
+                        Make Payment
+                    </mon-button>
                 </template>
             </mon-modal>
         </div>
@@ -237,8 +277,16 @@ export default {
 
             <mon-dropdown label="Open me" label-class="btn btn-primary" class="place-self-end">
                 <ul class="dropdown-menu" role="menu">
-                    <li><mon-button variant="secondary">Option A</mon-button></li>
-                    <li><mon-button variant="menu-danger">Option B</mon-button></li>
+                    <li>
+                        <mon-button variant="secondary">
+                            Option A
+                        </mon-button>
+                    </li>
+                    <li>
+                        <mon-button variant="menu-danger">
+                            Option B
+                        </mon-button>
+                    </li>
                 </ul>
             </mon-dropdown>
         </div>
@@ -246,11 +294,21 @@ export default {
         <div class="space-y-4">
             <h3>Toast (as Plugin)</h3>
             <div class="flex gap-2 flex-wrap">
-                <mon-button @click="$toast.info('info ' + count++)">Info</mon-button>
-                <mon-button @click="$toast.success('success ' + count++)">Success</mon-button>
-                <mon-button @click="$toast.warning('warning ' + count++)">Warning</mon-button>
-                <mon-button @click="$toast.error('danger ' + count++)" variant="danger">Error</mon-button>
-                <mon-button @click="$toast.default('default ' + count++)" variant="default">Default</mon-button>
+                <mon-button @click="$toast.info('info ' + count++)">
+                    Info
+                </mon-button>
+                <mon-button @click="$toast.success('success ' + count++)">
+                    Success
+                </mon-button>
+                <mon-button @click="$toast.warning('warning ' + count++)">
+                    Warning
+                </mon-button>
+                <mon-button variant="danger" @click="$toast.error('danger ' + count++)">
+                    Error
+                </mon-button>
+                <mon-button variant="default" @click="$toast.default('default ' + count++)">
+                    Default
+                </mon-button>
             </div>
         </div>
 
@@ -258,9 +316,15 @@ export default {
             <h3>Stepper</h3>
             <mon-step>
                 <template #default>
-                    <mon-panel name="Details" class="border p-7"> Details Panel </mon-panel>
-                    <mon-panel name="Pricing" class="border p-7"> Pricing Panel </mon-panel>
-                    <mon-panel name="Review" class="border p-7"> Review Panel </mon-panel>
+                    <mon-panel name="Details" class="border p-7">
+                        Details Panel
+                    </mon-panel>
+                    <mon-panel name="Pricing" class="border p-7">
+                        Pricing Panel
+                    </mon-panel>
+                    <mon-panel name="Review" class="border p-7">
+                        Review Panel
+                    </mon-panel>
                 </template>
             </mon-step>
         </div>
@@ -269,9 +333,15 @@ export default {
             <h3>Tabs</h3>
             <mon-tab>
                 <template #default>
-                    <mon-panel name="Details" class="border p-7"> Details Panel </mon-panel>
-                    <mon-panel name="Pricing" class="border p-7"> Pricing Panel </mon-panel>
-                    <mon-panel name="Review" class="border p-7"> Review Panel </mon-panel>
+                    <mon-panel name="Details" class="border p-7">
+                        Details Panel
+                    </mon-panel>
+                    <mon-panel name="Pricing" class="border p-7">
+                        Pricing Panel
+                    </mon-panel>
+                    <mon-panel name="Review" class="border p-7">
+                        Review Panel
+                    </mon-panel>
                 </template>
             </mon-tab>
         </div>
@@ -295,26 +365,80 @@ export default {
 
         <div>
             <h3>Input</h3>
-            <mon-input name="input_text" label="Username" v-model="form.input_text" :model="form"></mon-input>
-            <mon-input name="input_text" required label="Username" v-model="form.input_text" :model="form"></mon-input>
-            <mon-input name="input_password" type="password" label="Password" v-model="form.password" :model="form"></mon-input>
-            <mon-input name="input_desc" description="Sprinkle some description texts here" label="Best Food Reviewer? Sonny, Mark Wiens or Trevor" v-model="form.input_desc" :model="form"></mon-input>
-            <mon-input name="input_short" :max-char="20" label="Be brief!" v-model="form.input_short" :model="form"></mon-input>
-            <mon-input name="input_textarea" type="textarea" :maxChar="500" label="Be long!" v-model="form.input_textarea" :model="form"></mon-input>
-            <mon-input-group name="inputGroup" type="number" label="How much does 1 banana weigh?" v-model="form.inputGroup" unit="kilogram (kg)" placement="right" :model="form"></mon-input-group>
-            <mon-input-group name="inputGroup_2" type="number" label="Title" v-model="form.inputGroup" unit="Mr/Ms" placement="left" :model="form"></mon-input-group>
+            <mon-input
+                v-model="form.input_text"
+                name="input_text"
+                label="Username"
+                :model="form" />
+            <mon-input
+                v-model="form.input_text"
+                name="input_text"
+                required
+                label="Username"
+                :model="form" />
+            <mon-input
+                v-model="form.password"
+                name="input_password"
+                type="password"
+                label="Password"
+                :model="form" />
+            <mon-input
+                v-model="form.input_desc"
+                name="input_desc"
+                description="Sprinkle some description texts here"
+                label="Best Food Reviewer? Sonny, Mark Wiens or Trevor"
+                :model="form" />
+            <mon-input
+                v-model="form.input_short"
+                name="input_short"
+                :max-char="20"
+                label="Be brief!"
+                :model="form" />
+            <mon-input
+                v-model="form.input_textarea"
+                name="input_textarea"
+                type="textarea"
+                :max-char="500"
+                label="Be long!"
+                :model="form" />
+            <mon-input-group
+                v-model="form.inputGroup"
+                name="inputGroup"
+                type="number"
+                label="How much does 1 banana weigh?"
+                unit="kilogram (kg)"
+                placement="right"
+                :model="form" />
+            <mon-input-group
+                v-model="form.inputGroup"
+                name="inputGroup_2"
+                type="number"
+                label="Title"
+                unit="Mr/Ms"
+                placement="left"
+                :model="form" />
         </div>
         <div>
             <h3>Select</h3>
-            <mon-select name="select" label="Choose your best friend" v-model="form.select" :model="form" :selection="dummy('select')"></mon-select>
+            <mon-select
+                v-model="form.select"
+                name="select"
+                label="Choose your best friend"
+                :model="form"
+                :selection="dummy('select')" />
         </div>
         <div>
             <h3>Radio</h3>
-            <mon-radio name="radio" label="Choose your best friend" v-model="form.radio" :model="form" :selection="dummy('radio')"></mon-radio>
+            <mon-radio
+                v-model="form.radio"
+                name="radio"
+                label="Choose your best friend"
+                :model="form"
+                :selection="dummy('radio')" />
         </div>
         <div>
             <h3>Checkbox</h3>
-            <mon-checkbox name="checkbox" v-model="form.checkbox" :model="form">
+            <mon-checkbox v-model="form.checkbox" name="checkbox" :model="form">
                 <p>I agree to the terms and conditions. *Icon to be replaced</p>
             </mon-checkbox>
         </div>
@@ -322,19 +446,77 @@ export default {
         <div class="space-y-4">
             <h3>Chips</h3>
             <p>Filter Mode</p>
-            <mon-chips name="chips_1" :model="form" v-model="form.chips_1" :selection="dummy('chips')" chipClass="chip-default"></mon-chips>
-            <mon-chips name="chips_2" :model="form" v-model="form.chips_2" :selection="dummy('chips')" chipClass="chip-primary"></mon-chips>
+            <mon-chips
+                v-model="form.chips_1"
+                name="chips_1"
+                :model="form"
+                :selection="dummy('chips')"
+                variant="default" />
+            <mon-chips
+                v-model="form.chips_2"
+                name="chips_2"
+                :model="form"
+                :selection="dummy('chips')"
+                variant="primary" />
 
             <p>Editable Mode</p>
 
-            <mon-chips name="chips_3" mode="edit" :model="form" v-model="form.chips_3" :selection="form.chips_3" chipClass="chip-danger"></mon-chips>
+            <mon-chips
+                v-model="form.chips_3"
+                name="chips_3"
+                mode="edit"
+                :model="form"
+                :selection="form.chips_3"
+                variant="danger" />
         </div>
 
         <div class="space-y-4">
             <h3>Switch</h3>
 
-            <mon-switch name="switch_1" :model="form" v-model="form.switch_1"> Edit Mode </mon-switch>
-            <mon-switch name="switch_2" :model="form" v-model="form.switch_2"> Enable Dark Mode </mon-switch>
+            <mon-switch v-model="form.switch_1" name="switch_1" :model="form">
+                Edit Mode
+            </mon-switch>
+            <mon-switch v-model="form.switch_2" name="switch_2" :model="form">
+                Enable Dark Mode
+            </mon-switch>
+        </div>
+        
+        <div class="space-y-4">
+            <h3>Progress Bar</h3>
+
+            <mon-progress
+                label="default"
+                :value="25"
+                :max="100"
+                variant="default" />
+            
+            <mon-progress
+                label="primary"
+                :value="50"
+                :max="100"
+                variant="primary" />
+            <mon-progress
+                label="danger"
+                :value="75"
+                :max="100"
+                variant="danger" />
+            <mon-progress
+                label="with description"
+                :value="25"
+                :max="100"
+                variant="primary"
+                description="25% - Downloading package ..." />
+            <mon-progress
+                :value="57"
+                :max="100"
+                variant="primary"
+                description="57% - Installing MonUI with default configs ..." />
+            <mon-progress
+                :value="87"
+                :max="100"
+                variant="primary"
+                label="Installation Progress (Full Example)" 
+                description="57% - Installing MonUI with default configs ..." />
         </div>
     </div>
 </template>
@@ -342,8 +524,5 @@ export default {
 <style>
 #app {
     @apply container py-16 mx-auto px-7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
 }
 </style>

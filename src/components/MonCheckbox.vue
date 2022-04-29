@@ -1,14 +1,20 @@
 <template>
     <div class="form-checkbox">
-        <input :id="name" type="checkbox" :class="inputClass" :name="name" :checked="modelValue" @change="handleEmit($event)" :disabled="disabled" />
+        <input
+            :id="name"
+            type="checkbox"
+            :class="inputClass"
+            :name="name"
+            :checked="modelValue"
+            :disabled="disabled"
+            @change="handleEmit($event)">
 
         <div class="flex flex-col">
             <label :for="name" class="flex justify-start space-x-4">
                 <!-- TODO: Replace icon  -->
                 <i
                     :class="`fn fn-check text-base font-bold border rounded-full leading-none px-[4px] pt-[3px] pb-[2px] h-6
-                    ${modelValue ? 'bg-success-100 text-success-700 border-success-700' : 'bg-primary-50 text-gray-500 border-transparent'}`"
-                >
+                    ${modelValue ? 'bg-success-100 text-success-700 border-success-700' : 'bg-primary-50 text-gray-500 border-transparent'}`">
                     ✓
                 </i>
                 <slot></slot>
@@ -17,7 +23,7 @@
             <small v-if="description">{{ description }}</small>
         </div>
 
-        <span v-if="model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
+        <span v-if="model && model.exceptions.has(name)" class="text-red-500">{{ model.exceptions.get(name) }}</span>
     </div>
 </template>
 
@@ -37,6 +43,7 @@ export default defineComponent({
         modelValue: { type: Boolean, required: true },
         disabled: { type: Boolean, default: false, required: false }
     },
+    emits: ['update:modelValue'],
 
     methods: {
         handleEmit($event: Event) {

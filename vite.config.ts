@@ -11,7 +11,7 @@ export default defineConfig({
         },
         extensions: ['ts']
     },
-    base: '/mon-ui/'
+    base: process.env.NODE_ENV === 'production' ? '/mon-ui/' : ''
     /** For Library Production */
     // build: {
     //     lib: {
