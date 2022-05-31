@@ -16,12 +16,12 @@ export default defineConfig({
     // build: {
     //     lib: {
     //         formats: ['es'],
-    //         entry: resolve(__dirname, 'index.ts'),
+    //         entry: resolve(__dirname, 'index.ts')
     //     },
     //     rollupOptions: {
     //         input: {
     //             index: './index.ts',
-    //             components: './src/components/index.ts',
+    //             components: './src/components/index.ts'
     //         },
     //         external: ['vue'],
     //         output: {
